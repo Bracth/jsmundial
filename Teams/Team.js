@@ -3,6 +3,6 @@ export default class Team {
         this.teamName = teamName;
         this.matchesWon = 0;
         this.matchesDraw = 0;
-        this.MatcherLost = 0;
+        this.matchesLost = 0;
     }
 }

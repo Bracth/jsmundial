@@ -1,4 +1,5 @@
 import {footballCoup} from "./Coups/FootballCoup/FootballCoup.js"
+import { footballTeams } from "./Teams/FootballTeam/FootballTeam.js";
 
 // Indicacion de que el torneo a comenzado //
 
@@ -11,6 +12,7 @@ footballCoup.showParticipants();
 // Mostramos los resultados de los partidos //
 
 footballCoup.play();
+console.log(footballCoup.footballTeams);
 
 // Mostramos final y ganador de la copa //
 
