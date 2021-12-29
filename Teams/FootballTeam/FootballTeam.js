@@ -2,6 +2,7 @@
 
 import Team from "../Team.js";
 import { teamList } from "./teamList.js";
+import { shuffleArray } from "../../utils/shuffle.js";
 
 class FootballTeam extends Team{
     constructor(teamName) {
@@ -12,6 +13,6 @@ class FootballTeam extends Team{
     }
 }
 
-const footballTeams = teamList.map(teamName => new FootballTeam(teamName));
+shuffleArray(teamList);
 
-console.log(footballTeams);
+export const footballTeams = teamList.map(teamName => new FootballTeam(teamName));
