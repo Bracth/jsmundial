@@ -60,6 +60,11 @@ class FootballCoup extends Coup {
         this.roundOf16();
         console.log("=== Cuartos de Final ===");
         this.RoundOf8();
+        console.log("=== Semifinales ===");
+        this.RoundOf8(4);
+        console.log("=== Final ===");
+        this.RoundOf8(2);
+        console.log(`El ganador de la ${footballCoup.coupName} es ${footballCoup.winnersTeams[0].teamName}`)
     }
     
     roundOf16(rounds = 16) {
