@@ -39,11 +39,11 @@ class FootballCoup extends Coup {
     }
     
     updateTeams(homeTeam, awayTeam, result) {
-        homeTeam.goalsFor = result.homeGoals;
-        homeTeam.goalsAgainst = result.awayGoals;
+        homeTeam.goalsFor += result.homeGoals;
+        homeTeam.goalsAgainst += result.awayGoals;
         
-        awayTeam.goalsFor = result.awayGoals;
-        awayTeam.goalsAgainst = result.homeGoals;
+        awayTeam.goalsFor += result.awayGoals;
+        awayTeam.goalsAgainst += result.homeGoals;
         
         if (homeTeam.teamName === result.winner) {
             homeTeam.matchesWon += 1;
@@ -58,6 +58,8 @@ class FootballCoup extends Coup {
     play(){
         console.log("==== Octavos de Final ====");
         this.roundOf16();
+        console.log("=== Cuartos de Final ===");
+        this.RoundOf8();
     }
     
     roundOf16(rounds = 16) {
@@ -75,6 +77,25 @@ class FootballCoup extends Coup {
                 this.winnersTeams.push(awayTeam);
             }
         }
+    }
+    
+    RoundOf8(rounds = 8) {
+        const winnersOfThisRound = [];
+        for (let i = 0; i < rounds; i += 2){
+            const homeTeam = this.winnersTeams[i];
+            const awayTeam = this.winnersTeams[i + 1];
+            const result = this.playMatch(homeTeam.teamName, awayTeam.teamName);
+            this.updateTeams(homeTeam, awayTeam, result);
+            
+            console.log(`${ homeTeam.teamName } ${ result.homeGoals } -- ${ awayTeam.teamName } ${ result.awayGoals } ==> ${ result.winner }`);
+            
+            if (homeTeam.teamName === result.winner) {
+                winnersOfThisRound.push(homeTeam);
+            } else {
+                winnersOfThisRound.push(awayTeam);
+            }
+        }
+        this.winnersTeams = winnersOfThisRound;
     }
     
 }
