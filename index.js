@@ -16,5 +16,5 @@ footballCoup.play();
 
 // Mostramos final y ganador de la copa //
 
-
+console.log(footballCoup.footballTeams);
 

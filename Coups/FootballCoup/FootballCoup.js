@@ -5,7 +5,8 @@ class FootballCoup extends Coup {
     constructor(coupName, teams) {
         super(coupName);
         this.footballTeams = footballTeams;
-        this.winnersTeams = [];
+        this.participatingTeams = footballTeams;
+        this.partipipatingLossersTeams = [];
     }
     
     showParticipants() {
@@ -57,51 +58,53 @@ class FootballCoup extends Coup {
     
     play(){
         console.log("==== Octavos de Final ====");
-        this.roundOf16();
+        this.roundOf(16);
         console.log("=== Cuartos de Final ===");
-        this.RoundOf8();
+        this.roundOf(8);
         console.log("=== Semifinales ===");
-        this.RoundOf8(4);
+        this.roundOf(4);
+        console.log("=== Terceros ===");
+        this.roundOf(2, true);
         console.log("=== Final ===");
-        this.RoundOf8(2);
-        console.log(`El ganador de la ${footballCoup.coupName} es ${footballCoup.winnersTeams[0].teamName}`)
+        this.roundOf(2);
+        console.log(`El ganador de la ${footballCoup.coupName} es ${footballCoup.participatingTeams[0].teamName}`)
     }
     
-    roundOf16(rounds = 16) {
-        for (let i = 0; i < rounds; i += 2){
-            const homeTeam = this.footballTeams[i];
-            const awayTeam = this.footballTeams[i + 1];
-            const result = this.playMatch(homeTeam.teamName, awayTeam.teamName);
-            this.updateTeams(homeTeam, awayTeam, result);
-
-            console.log(`${ homeTeam.teamName } ${ result.homeGoals } -- ${ awayTeam.teamName } ${ result.awayGoals } ==> ${ result.winner }`);
-            
-            if (homeTeam.teamName === result.winner) {
-                this.winnersTeams.push(homeTeam);
+    roundOf(rounds = 16, lossers = false) {
+        const winnersTeams = [];
+        const lossersTeams = [];
+        for (let i = 0; i < rounds; i += 2) {
+            let homeTeam;
+            let awayTeam;
+            if (lossers) {
+             homeTeam = this.participatingLossersTeams[i];
+             awayTeam = this.participatingLossersTeams[i + 1];
             } else {
-                this.winnersTeams.push(awayTeam);
+             homeTeam = this.participatingTeams[i];
+             awayTeam = this.participatingTeams[i + 1];
             }
-        }
-    }
-    
-    RoundOf8(rounds = 8) {
-        const winnersOfThisRound = [];
-        for (let i = 0; i < rounds; i += 2){
-            const homeTeam = this.winnersTeams[i];
-            const awayTeam = this.winnersTeams[i + 1];
             const result = this.playMatch(homeTeam.teamName, awayTeam.teamName);
             this.updateTeams(homeTeam, awayTeam, result);
             
             console.log(`${ homeTeam.teamName } ${ result.homeGoals } -- ${ awayTeam.teamName } ${ result.awayGoals } ==> ${ result.winner }`);
             
             if (homeTeam.teamName === result.winner) {
-                winnersOfThisRound.push(homeTeam);
+                winnersTeams.push(homeTeam);
+                lossersTeams.push(awayTeam);
             } else {
-                winnersOfThisRound.push(awayTeam);
+                winnersTeams.push(awayTeam);
+                lossersTeams.push(homeTeam);
             }
         }
-        this.winnersTeams = winnersOfThisRound;
+        if (lossers) {
+        } else {
+             this.participatingTeams = winnersTeams;
+             this.participatingLossersTeams = lossersTeams;
+        }
+        
     }
+    
+    
     
 }
 
