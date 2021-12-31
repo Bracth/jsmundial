@@ -12,7 +12,7 @@ footballCoup.showParticipants();
 // Mostramos los resultados de los partidos //
 
 footballCoup.play();
-console.log(footballCoup.footballTeams);
+
 
 // Mostramos final y ganador de la copa //
 
