@@ -2,7 +2,7 @@ import Coup from "../Coup.js";
 import { footballTeams } from "../../Teams/FootballTeam/FootballTeam.js";
 
 class FootballCoup extends Coup {
-    constructor(coupName, teams) {
+    constructor(coupName) {
         super(coupName);
         this.footballTeams = footballTeams;
         this.participatingTeams = footballTeams;
