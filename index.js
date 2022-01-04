@@ -9,7 +9,8 @@ console.log("Iniciamos el torneo");
 // Iniciamos la liga//
 
 footballLeague.makingSchedule();
-footballLeague.showSchedule();
+// footballLeague.showSchedule();
+footballLeague.playLeague();
 
 // Mostramos los equipos participantes //
 

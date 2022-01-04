@@ -9,6 +9,10 @@ class FootballLeague extends League {
         
     }
     
+     generateGoals() {
+        return Math.floor(Math.random()* 9);
+    }
+    
     makingSchedule(participatingTeams = 4, numberOfGroups = 8) {
         let counterForTeamsGroups = 0;
         for (let groupCounter = 0; groupCounter < numberOfGroups; groupCounter++) {
@@ -45,9 +49,11 @@ class FootballLeague extends League {
         }
         
     }
+    
     showSchedule() {
         let count = 0;
-        this.schedule.forEach((group, index )=> {
+        this.schedule.forEach((group, index) => {
+            console.log("");
             console.log(`Grupo ${ index + 1 }`)
             console.log("=====================================")
             console.log(this.footballTeams[0 + count].teamName)
@@ -66,6 +72,25 @@ class FootballLeague extends League {
             count += 4;
         });
     
+    }
+    
+    playLeague() {
+        const numberOfRounds = this.schedule[0].length;
+        for (let i = 0; i < numberOfRounds; i++){
+            this.schedule.forEach((group, index) => {
+                console.log(`Grupo ${ index + 1 } - Jornada ${ i + 1 }:`)
+                console.log("----------------------------")
+                
+                let homeGoals = this.generateGoals();
+                let awayGoals = this.generateGoals();
+                console.log(`${ group[i][0][0].teamName } ${homeGoals} - ${awayGoals} ${ group[i][0][1].teamName }`);
+                
+                homeGoals = this.generateGoals();
+                awayGoals = this.generateGoals();
+                console.log(`${ group[i][1][0].teamName } ${homeGoals} - ${awayGoals} ${ group[i][1][1].teamName }`);
+                console.log("");
+            })
+        }
     }
     
 }
