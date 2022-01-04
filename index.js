@@ -9,14 +9,7 @@ console.log("Iniciamos el torneo");
 // Iniciamos la liga//
 
 footballLeague.makingSchedule();
-console.log("Grupo A")
-console.log(footballLeague.schedule[0]);
-console.log("Grupo B")
-console.log(footballLeague.schedule[1]);
-console.log("Grupo C")
-console.log(footballLeague.schedule[2]);
-console.log("Grupo D")
-console.log(footballLeague.schedule[3]);
+footballLeague.showSchedule();
 
 // Mostramos los equipos participantes //
 
