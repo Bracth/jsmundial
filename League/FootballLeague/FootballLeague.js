@@ -97,7 +97,7 @@ class FootballLeague extends League {
                 
                 console.table(groupMatches);
                 
-                if (i = numberOfRounds - 1) {
+                if (i === numberOfRounds - 1) {
                     this.winners.push(groupMatches[0]);
                     this.winners.push(groupMatches[1]);                    
                 }
@@ -156,9 +156,6 @@ class FootballLeague extends League {
                 }
             }
         })
-    }
-    
-    selectWinners(){
     }
     
 }
