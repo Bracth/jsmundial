@@ -11,6 +11,7 @@ export default class FootballCoup extends Coup {
     }
     
     showParticipants() {
+        console.log("");
         this.footballTeams.forEach(footballTeam => {
             console.log(footballTeam.teamName);
         });
@@ -57,17 +58,19 @@ export default class FootballCoup extends Coup {
     }
     
     
-    play(){
-        console.log("==== Octavos de Final ====");
+    play() {
+        console.log("");
+        console.log("======================== Octavos de Final =============================");
         this.roundOf(16);
-        console.log("=== Cuartos de Final ===");
+        console.log("======================== Cuartos de Final =============================");
         this.roundOf(8);
-        console.log("=== Semifinales ===");
+        console.log("======================== Semifinales ==================================");
         this.roundOf(4);
-        console.log("=== Terceros ===");
+        console.log("=========================== Terceros ===================================");
         this.roundOf(2, true);
-        console.log("=== Final ===");
+        console.log("=========================== Final =======================================");
         this.roundOf(2);
+        console.log("");
         console.log(`El ganador de la ${this.coupName} es ${this.participatingTeams[0].teamName}`)
     }
     

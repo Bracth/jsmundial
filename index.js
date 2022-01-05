@@ -15,7 +15,8 @@ const footballCoup = new FootballCoup("Copa Mundial", footballLeague.winners);
 
 // Mostramos los equipos participantes //
 
-
+console.log("");
+console.log("equipos que van a participar en la playOff")
 footballCoup.showParticipants();
 
 // Mostramos los resultados de los partidos //
