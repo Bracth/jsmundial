@@ -11,6 +11,7 @@ console.log("Iniciamos el torneo");
 footballLeague.makingSchedule();
 // footballLeague.showSchedule();
 footballLeague.playLeague();
+console.log(footballLeague.winners);
 
 // Mostramos los equipos participantes //
 

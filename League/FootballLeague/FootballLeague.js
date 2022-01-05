@@ -6,7 +6,7 @@ class FootballLeague extends League {
     constructor(leagueName) {
         super(leagueName);
         this.footballTeams = footballTeams;
-        
+        this.winners = [];
     }
     
      generateGoals() {
@@ -96,6 +96,11 @@ class FootballLeague extends League {
                 this.ordeningTeam(groupMatches);
                 
                 console.table(groupMatches);
+                
+                if (i = numberOfRounds - 1) {
+                    this.winners.push(groupMatches[0]);
+                    this.winners.push(groupMatches[1]);                    
+                }
             })
         }
     }
@@ -151,6 +156,9 @@ class FootballLeague extends League {
                 }
             }
         })
+    }
+    
+    selectWinners(){
     }
     
 }
