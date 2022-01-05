@@ -92,7 +92,10 @@ class FootballLeague extends League {
                 this.updateTeams(homeGoals, group[i][1][0], awayGoals, group[i][1][1]);
                 console.log("");
                 
-                console.table(group[i][0].concat(group[i][1]));
+                const groupMatches = group[i][0].concat(group[i][1]);
+                this.ordeningTeam(groupMatches);
+                
+                console.table(groupMatches);
             })
         }
     }
@@ -100,9 +103,11 @@ class FootballLeague extends League {
     updateTeams(homeGoals, homeTeam, awayGoals, awayTeam) {
         homeTeam.goalsFor += homeGoals;
         homeTeam.goalsAgainst += awayGoals;
+        homeTeam.diffGoals = homeTeam.goalsFor - homeTeam.goalsAgainst;
         
         awayTeam.goalsFor += awayGoals;
         awayTeam.goalsAgainst += homeGoals;
+        awayTeam.diffGoals = awayTeam.goalsFor - awayTeam.goalsAgainst;
         
         if (homeGoals > awayGoals) {
             homeTeam.matchesWon += 1;
@@ -120,6 +125,32 @@ class FootballLeague extends League {
             awayTeam.matchesDraw += 1;
             awayTeam.points += 1;
         }
+    }
+    
+    ordeningTeam(groupMatches) {
+        return groupMatches.sort((teamA, teamB) => {
+            if (teamA.points > teamB.points) {
+                return -1;
+            } else if (teamA.points < teamB.points) {
+                return 1;
+            } else {
+                
+                if(teamA.diffGoals > teamB.diffGoals) {
+                    return -1
+                } else if (teamA.diffGoals < teamB.diffGoals) {
+                    return 1
+                } else {
+                    
+                    if (teamA.teamName < teamB.teamName) {
+                        return -1
+                    } else if (teamA.teamName > teamB.teamName) {
+                        return 1
+                    } else {
+                        return 0
+                    }
+                }
+            }
+        })
     }
     
 }
