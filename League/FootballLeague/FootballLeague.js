@@ -83,13 +83,42 @@ class FootballLeague extends League {
                 
                 let homeGoals = this.generateGoals();
                 let awayGoals = this.generateGoals();
-                console.log(`${ group[i][0][0].teamName } ${homeGoals} - ${awayGoals} ${ group[i][0][1].teamName }`);
+                console.log(`${ group[i][0][0].teamName } ${ homeGoals } - ${ awayGoals } ${ group[i][0][1].teamName }`);
+                this.updateTeams(homeGoals, group[i][0][0], awayGoals, group[i][0][1]);
                 
                 homeGoals = this.generateGoals();
                 awayGoals = this.generateGoals();
-                console.log(`${ group[i][1][0].teamName } ${homeGoals} - ${awayGoals} ${ group[i][1][1].teamName }`);
+                console.log(`${ group[i][1][0].teamName } ${ homeGoals } - ${ awayGoals } ${ group[i][1][1].teamName }`);
+                this.updateTeams(homeGoals, group[i][1][0], awayGoals, group[i][1][1]);
                 console.log("");
+                
+                console.table(group[i][0].concat(group[i][1]));
             })
+        }
+    }
+    
+    updateTeams(homeGoals, homeTeam, awayGoals, awayTeam) {
+        homeTeam.goalsFor += homeGoals;
+        homeTeam.goalsAgainst += awayGoals;
+        
+        awayTeam.goalsFor += awayGoals;
+        awayTeam.goalsAgainst += homeGoals;
+        
+        if (homeGoals > awayGoals) {
+            homeTeam.matchesWon += 1;
+            homeTeam.points += 3;
+            awayTeam.matchesLost += 1;
+            awayTeam.points += 0;
+        } else if (homeGoals < awayGoals) {
+            awayTeam.matchesWon += 1;
+            awayTeam.points += 3;
+            homeTeam.matchesLost += 1;
+            homeTeam.points += 0;
+        } else {
+            homeTeam.matchesDraw += 1;
+            homeTeam.points += 1;
+            awayTeam.matchesDraw += 1;
+            awayTeam.points += 1;
         }
     }
     
