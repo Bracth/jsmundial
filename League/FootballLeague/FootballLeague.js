@@ -103,6 +103,7 @@ class FootballLeague extends League {
                 }
             })
         }
+        this.ordeningWinners();
     }
     
     updateTeams(homeGoals, homeTeam, awayGoals, awayTeam) {
@@ -156,6 +157,29 @@ class FootballLeague extends League {
                 }
             }
         })
+    }
+    
+    ordeningWinners() {
+        const winners = [];
+        winners.push(this.winners[0]);
+        winners.push(this.winners[3]);
+        winners.push(this.winners[4]);
+        winners.push(this.winners[7]);
+        winners.push(this.winners[8]);
+        winners.push(this.winners[11]);
+        winners.push(this.winners[12]);
+        winners.push(this.winners[15]);
+        
+        winners.push(this.winners[2]);
+        winners.push(this.winners[1]);
+        winners.push(this.winners[6]);
+        winners.push(this.winners[5]);
+        winners.push(this.winners[10]);
+        winners.push(this.winners[9]);
+        winners.push(this.winners[14]);
+        winners.push(this.winners[13]);
+        
+        this.winners = winners;
     }
     
 }

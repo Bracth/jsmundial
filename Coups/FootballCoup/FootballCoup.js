@@ -1,8 +1,9 @@
 import Coup from "../Coup.js";
 import { footballTeams } from "../../Teams/FootballTeam/FootballTeam.js";
 
-class FootballCoup extends Coup {
-    constructor(coupName) {
+
+export default class FootballCoup extends Coup {
+    constructor(coupName, footballTeams) {
         super(coupName);
         this.footballTeams = footballTeams;
         this.participatingTeams = footballTeams;
@@ -67,7 +68,7 @@ class FootballCoup extends Coup {
         this.roundOf(2, true);
         console.log("=== Final ===");
         this.roundOf(2);
-        console.log(`El ganador de la ${footballCoup.coupName} es ${footballCoup.participatingTeams[0].teamName}`)
+        console.log(`El ganador de la ${this.coupName} es ${this.participatingTeams[0].teamName}`)
     }
     
     roundOf(rounds = 16, lossers = false) {
@@ -107,6 +108,4 @@ class FootballCoup extends Coup {
     
     
 }
-
-export const footballCoup = new FootballCoup("Copa Mundial");
 
