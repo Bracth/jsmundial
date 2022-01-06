@@ -14,6 +14,8 @@ class FootballTeam extends Team{
     }
 }
 
+// ordenamos de forma aleatoria los equipos //
+
 shuffleArray(teamList);
 
 export const footballTeams = teamList.map(teamName => new FootballTeam(teamName));

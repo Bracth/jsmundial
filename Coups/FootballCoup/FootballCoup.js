@@ -10,6 +10,8 @@ export default class FootballCoup extends Coup {
         this.partipipatingLossersTeams = [];
     }
     
+    // metodo para mostrar los participantes de los playoff //
+    
     showParticipants() {
         console.log("");
         this.footballTeams.forEach(footballTeam => {
@@ -17,9 +19,13 @@ export default class FootballCoup extends Coup {
         });
     }
     
+    // metodo para generar goles //
+    
     generateGoals() {
         return Math.floor(Math.random()* 9);
     }
+    
+    // metodo para jugar los partidos //
     
     playMatch(homeTeam, awayTeam) {
         const result = {
@@ -41,6 +47,8 @@ export default class FootballCoup extends Coup {
         return result;
     }
     
+    // metodo para actualizar la informacion de los equipos //
+    
     updateTeams(homeTeam, awayTeam, result) {
         homeTeam.goalsFor += result.homeGoals;
         homeTeam.goalsAgainst += result.awayGoals;
@@ -57,6 +65,7 @@ export default class FootballCoup extends Coup {
         }
     }
     
+    // metodo en donde mostramos los resultados y llamamos al metodo para jugar //
     
     play() {
         console.log("");
@@ -73,6 +82,8 @@ export default class FootballCoup extends Coup {
         console.log("");
         console.log(`El ganador de la ${this.coupName} es ${this.participatingTeams[0].teamName}`)
     }
+    
+    // metodo que se encarga de recorrer la lista de equipos y emparejarlos para jugar //
     
     roundOf(rounds = 16, lossers = false) {
         const winnersTeams = [];

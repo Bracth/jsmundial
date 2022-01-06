@@ -9,9 +9,13 @@ class FootballLeague extends League {
         this.winners = [];
     }
     
+    // metodo para generar goles //
+    
      generateGoals() {
         return Math.floor(Math.random()* 9);
     }
+    
+    // metodo para crear el schedule de partidos //
     
     makingSchedule(participatingTeams = 4, numberOfGroups = 8) {
         let counterForTeamsGroups = 0;
@@ -50,6 +54,8 @@ class FootballLeague extends League {
         
     }
     
+    // metodo para mostrar la planificacion //
+    
     showSchedule() {
         let count = 0;
         this.schedule.forEach((group, index) => {
@@ -73,6 +79,8 @@ class FootballLeague extends League {
         });
     
     }
+    
+    // metodo para jugar la liga y mostrar resultados //
     
     playLeague() {
         const numberOfRounds = this.schedule[0].length;
@@ -106,6 +114,8 @@ class FootballLeague extends League {
         this.ordeningWinners();
     }
     
+    // metodo para guardar la info de los equipos luego de los partidos //
+    
     updateTeams(homeGoals, homeTeam, awayGoals, awayTeam) {
         homeTeam.goalsFor += homeGoals;
         homeTeam.goalsAgainst += awayGoals;
@@ -133,6 +143,8 @@ class FootballLeague extends League {
         }
     }
     
+    // metodo para ordenar a los equipos dentro de los grupos //
+    
     ordeningTeam(groupMatches) {
         return groupMatches.sort((teamA, teamB) => {
             if (teamA.points > teamB.points) {
@@ -158,6 +170,8 @@ class FootballLeague extends League {
             }
         })
     }
+    
+    // metodo para ordenar los ganadores de la liga de manera que no se enfrenten en la playoff antes de la final //
     
     ordeningWinners() {
         const winners = [];
