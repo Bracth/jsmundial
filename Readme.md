@@ -1,0 +1,3 @@
+## Programa de copa mundial
+
+En este programa utilizo las clases League y Coup para simular un torneo de futbol entre 32 equipos españoles (sacando la lista de equipos en una api utilizando axios), escogidos al azar en cada simulacion. Luego de ordenar los equipos los convierto en un objeto utilizando una clase en donde vamos a ir guardando toda la informacion de los partidos. Luego de tener los equipos ya listos, empezamos la liga, dividiendo los equipos en ocho grupos y jugando 3 jordanas. Al finalizar la liga tomamos a los dos mejores de cada grupo y los ordenamos de manera que cuando se enfrenten en la copa, los equipos de mismo grupo no se encuentren hasta la final. Luego de ordenar los equipos empezamos la copa hasta quedar con el ganador del mundial.
